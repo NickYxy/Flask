@@ -18,7 +18,7 @@ def register_routes(app):
     from routes.index import main as routes_index
     # from routes.chat import main as routes_chat
     # from routes.user import main as routes_user
-    app.register_blueprint(routes_index, url_prefix='/')
+    app.register_blueprint(routes_index, url_prefix='/index')
     # app.register_blueprint(routes_chat, url_prefix='/chat')
     # app.register_blueprint(routes_user, url_prefix='/user')
 
@@ -45,7 +45,7 @@ def server():
     config = dict(
         debug=True,
         host='0.0.0.0',
-        port=3000,
+        port=3001,
     )
     app.run(**config)
 

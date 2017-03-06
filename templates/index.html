@@ -3,8 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <title>v2ex</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+        }
+        header {
+            position: relative;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.22);
+        }
+        background {
+            background-color: lightgrey;
+            display: block;
+            margin-top: -22px;
+        }
+        left {
+            display: block;
+            background-color: white;
+            padding: 10px;
+            margin: 20px 0 0 20px;
+            width: 500px;
+            position: relative;
+            top: 20px;
+        }
+        #sea {
+            border: 0px;
+            padding: 0px;
+            margin: 0 0 0 30px;
+        }
+        #sea:focus {
+            border: 0px;
+            padding: 0px;
+            margin: 0 0 0 30px;
+            outline: none;
+        }
+        .v2ex-img {
+            display: inline-block;
+        }
+        .v2ex-sea {
+            width: 276px;
+            height: 28px;
+            background-size: 276px 28px;
+            background-image: url('https://www.v2ex.com/static/img/qbar_light@2x.png');
+            background-repeat: no-repeat;
+            display: inline-block;
+            position: relative;
+            top: -13px;
+        }
+        .cell {
+            padding: 10px;
+            font-size: 12px;
+            line-height: 120%;
+            text-align: left;
+
+            height: 36px;
+        }
+        .cell + .cell {
+            border-top: 1px solid #e2e2e2;
+        }
+        .created_time {
+            position: absolute;
+            right: 50px;
+        }
+        .cell:hover {
+            font-size: 20px;
+            height: 48px;
+            transform: ;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>hello world</h1>
+    <header>
+        <div class="v2ex-img">
+            <img src="//v2ex.assets.uxengine.net/site/logo@2x.png?m=1346064962" border="0" align="default" alt="V2EX" width="94" height="30">
+        </div>
+        <div class=v2ex-sea >
+            <input type="text" maxlength="40" name="q" value="" id="sea">
+        </div>
+
+    </header>
+    <background>
+        <left>
+            <h1>hello world</h1>
+            <form action="/index/add" method="post">
+                <input type="text" name="title" placeholder="title">
+                <input type="text" name="text" placeholder="text">
+                <input type="text" name="user_id" placeholder="user">
+                <button type="submit">submit</button>
+            </form>
+            {% for i in topics %}
+            <div class="cell">
+                <!--<div>{{ i }}</div>-->
+                <span>{{ i.title }}</span>
+                <span>@{{ i.user_id }}</span>
+                <span>text：{{ i.text }}</span>
+                <span class="created_time">{{ i.created_time }}</span>
+            </div>
+            {% endfor %}
+         </left>
+    </background>
 </body>
 </html>
